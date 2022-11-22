@@ -131,4 +131,3 @@ function easeOut(t, b, c, d) {
 
 Telegram.WebApp.expand();
 drawRouletteWheel();
-Telegram.WebApp.close();
