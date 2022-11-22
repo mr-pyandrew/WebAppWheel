@@ -10,7 +10,7 @@ var spinTimeTotal = 0;
 
 var ctx;
 
-//document.getElementById("spin").addEventListener("click", spin);
+document.getElementById("spin").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -112,11 +112,15 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
-  Telegram.WebApp.expand();
-  Telegram.WebApp.sendData(text);
-  Telegram.WebApp.close();
+  Telegram.WebApp.MainButton.setText('Result').setParams({"color": "#143F6B"}).show().onClick(function () {
+        const data = JSON.stringify({hex: text});
+        Telegram.WebApp.sendData(data);
+        Telegram.WebApp.close();
+    });
+  Telegram.WebApp.MainButton.show()
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
+  return text
 }
 
 function easeOut(t, b, c, d) {
@@ -125,5 +129,6 @@ function easeOut(t, b, c, d) {
   return b+c*(tc + -3*ts + 3*t);
 }
 
+Telegram.WebApp.expand();
 drawRouletteWheel();
-spin();
+Telegram.WebApp.close();
