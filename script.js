@@ -115,6 +115,7 @@ function stopRotateWheel() {
   Telegram.WebApp.MainButton.setText('Result').setParams({"color": "#143F6B"}).show().onClick(function () {
         const data = JSON.stringify({hex: text});
         Telegram.WebApp.sendData(data);
+        Telegram.WebApp.close();
     });
   Telegram.WebApp.MainButton.show()
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
