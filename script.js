@@ -112,13 +112,9 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
-  let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-  tg.expand();
-  tg.sendData(String(tg.initDataUnsafe.user.id) + "_" + text);
-  tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-  tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
-  tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-  tg.MainButton.color = "#143F6B";
+  Telegram.WebApp.expand();
+  Telegram.WebApp.sendData(text);
+  Telegram.WebApp.close();
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
