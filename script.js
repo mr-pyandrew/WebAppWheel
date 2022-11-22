@@ -112,7 +112,8 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
-  console.log(text)
+  let tg = window.Telegram.WebApp;
+  tg.sendData(String(tg.initDataUnsafe.user.id) + "_" + text);
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
