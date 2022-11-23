@@ -118,7 +118,6 @@ function stopRotateWheel() {
         Telegram.WebApp.MainButton.setParams({"color": "#00ffff"})
         Telegram.WebApp.close();
     });
-  Telegram.WebApp.MainButton.show()
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
   return text
