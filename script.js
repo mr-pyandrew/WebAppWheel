@@ -112,12 +112,10 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
-  Telegram.WebApp.MainButton.setText('Result').setParams({"color": "#143F6B"}).show().onClick(function () {
-        Telegram.WebApp.sendData(String(text));
-        Telegram.WebApp.close();
-    });
+  Telegram.WebApp.sendData(String(text)+'_'+String(index));
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
+  Telegram.WebApp.close();
 }
 
 function easeOut(t, b, c, d) {
@@ -126,5 +124,6 @@ function easeOut(t, b, c, d) {
   return b+c*(tc + -3*ts + 3*t);
 }
 
+Telegram.WebApp.ready();
 Telegram.WebApp.expand();
 drawRouletteWheel();
