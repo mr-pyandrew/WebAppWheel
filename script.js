@@ -113,14 +113,11 @@ function stopRotateWheel() {
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
   Telegram.WebApp.MainButton.setText('Result').setParams({"color": "#143F6B"}).show().onClick(function () {
-        Telegram.WebApp.MainButton.setParams({"color": "#000000"})
         Telegram.WebApp.sendData(String(text));
-        Telegram.WebApp.MainButton.setParams({"color": "#00ffff"})
         Telegram.WebApp.close();
     });
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
-  return text
 }
 
 function easeOut(t, b, c, d) {
